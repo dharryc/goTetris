@@ -84,21 +84,22 @@ func doSomething(something chan string) {
 
 func printTetris(board [][]int) {
 	for _, row := range board {
+		var line string
 		for _, cell := range row {
 			if cell == 0 {
-				fmt.Print(". ")
+				line += ". "
 			} else {
-				fmt.Print("# ")
+				line += "# "
 			}
 		}
-		fmt.Println()
+		fmt.Print(line + "\r\n")
 	}
 }
 
 func get_tetrimino() [][]int {
 	i_tetrimino := [][]int{
-		{0, 0, 0, 0},
 		{1, 1, 1, 1},
+		{0, 0, 0, 0},
 	}
 	j_tetrimino := [][]int{
 		{1, 0, 0},
