@@ -32,6 +32,12 @@ game over
 - game of life on death screen
 
 
+Insights about how to get this to actually work
+- 3 threads
+- 1 listens to keystrokes and updates board
+- 1 moves living tetrimino down 1 every {gametick}
+- 1 prints board anytime there's a change
+
 
 ## Credits
 Colored board: https://github.com/fatih/color?tab=readme-ov-file
