@@ -9,11 +9,13 @@ func moveTetriminoDown(tetrimino *[]Coord) {
 }
 
 func gameTick(gameSpeedChannel chan int, gameRunningChannel chan bool, currentTetrimino *[]Coord) {
-	var gameRunning = true
+	var gameRunning = <-gameRunningChannel
+	var tickSpeed = <-gameSpeedChannel
 	for gameRunning {
-		time.Sleep(time.Duration(<-gameSpeedChannel) * time.Millisecond)
+		time.Sleep(time.Duration(tickSpeed) * time.Millisecond)
 		select {
 		case gameRunning = <-gameRunningChannel:
+		case tickSpeed = <-gameSpeedChannel:
 		default:
 			moveTetriminoDown(currentTetrimino)
 		}
